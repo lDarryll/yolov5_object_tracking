@@ -20,7 +20,7 @@ import argparse
 
 def make_parser():
     parser = argparse.ArgumentParser("Object Tracking !")
-    parser.add_argument("--choose_tracking", default= 1, type=int, help="choose tracking algorithm, 0:byte_track, 1:deepsort, 2:sort")
+    parser.add_argument("--choose_tracking", default= 0, type=int, help="choose tracking algorithm, 0:byte_track, 1:deepsort, 2:sort")
     parser.add_argument(
         "--demo", default="video", help="demo type, eg. image, video and webcam"
     )
@@ -54,7 +54,7 @@ def make_parser():
     parser.add_argument("--num_classes", type=int, default=80, help="number of classes")
     parser.add_argument("--conf", default=0.1, type=float, help="test conf")
     parser.add_argument("--nms", default=0.45, type=float, help="test nms threshold")
-    parser.add_argument("--tsize", default=(800, 1440), type=tuple, help="test image size")
+    parser.add_argument("--tsize", default=(640, 640), type=tuple, help="test image size")
     parser.add_argument(
         "--fp16",
         dest="fp16",
@@ -115,7 +115,7 @@ def byte_track_imageflow_demo(predictor, vis_folder, current_time, args):
             bbox_xyxy = []
             confs = []
             clss = []
-            names = ['bus', 'truck', 'car']
+            # names = ['bus', 'truck', 'car']
             for x1, y1, x2, y2, cls_id, conf in bboxes:
                 # if  cls_id not in names:
                 #     print(conf)
@@ -128,7 +128,7 @@ def byte_track_imageflow_demo(predictor, vis_folder, current_time, args):
                 confs.append(conf)
                 clss.append(cls_id)
             # for i, det in enumerate(outputs):
-            if dets is not None:
+            if len(bbox_xyxy)>0:
                 online_targets = tracker.update(dets)
                 online_tlwhs = []
                 online_ids = []
@@ -167,7 +167,6 @@ def deepsort_imageflow_demo(predictor, vis_folder, current_time, args):
     fps = int(cap.get(5))
     print('fps:', fps)
     t = int(1000/fps)
-    # COLORS = np.random.randint(0, 255, size=(200, 3), dtype='uint8')
     videoWriter = None
     # deep = 3
     while True:

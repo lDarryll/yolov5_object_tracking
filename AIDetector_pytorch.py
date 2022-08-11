@@ -57,8 +57,9 @@ class Detector(baseDet):
 
                 for *x, conf, cls_id in det:
                     lbl = self.names[int(cls_id)]
-                    # if not lbl in ['person', 'car', 'truck']:
-                    #     continue
+                    names = ['bus', 'truck', 'car']
+                    if not lbl in names:
+                        continue
                     x1, y1 = int(x[0]), int(x[1])
                     x2, y2 = int(x[2]), int(x[3])
                     pred_boxes.append(
