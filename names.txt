@@ -1,0 +1,28 @@
+00:
+'person'
+01:
+'bicycle'
+02:
+'car'
+03:
+'motorcycle'
+04:
+'airplane'
+05:
+'bus'
+06:
+'train'
+07:
+'truck'
+08:
+'boat'
+09:
+'traffic light'
+10:
+'fire hydrant'
+11:
+'stop sign'
+12:
+'parking meter'
+13:
+'bench'
