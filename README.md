@@ -1,6 +1,6 @@
 # 项目简介：
 
-使用YOLOv5作为检测器，目标跟踪分辨用，bytetrack， deepsort， sort
+使用YOLOv5作为检测器，目标跟踪分别用，bytetrack， deepsort， sort
 
 即：
 
